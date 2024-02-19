@@ -31,7 +31,7 @@ nixpkgs-ruby-111-gems-update && direnv reload
 To be sure we're not using an ancient version of Rails included in popular
 BSD-derivatives.
 
-#+begin_src sh
+#+begin_src sh :exports both
 type rails
 #+end_src
 
