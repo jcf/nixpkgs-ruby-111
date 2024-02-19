@@ -1,0 +1,72 @@
+#+title: nixpkgs-ruby + Bundix
+#+startup: content
+
+https://github.com/bobvanderlinden/nixpkgs-ruby/issues/111
+
+* Setup
+Install Ruby and our Bundix wrapper.
+
+#+begin_src sh :eval never
+direnv reload
+#+end_src
+
+Update gems, blowing away lock files, and make sure binstubs are available.
+
+#+begin_src sh :eval never
+nixpkgs-ruby-111-gems-update && direnv reload
+#+end_src
+
+* Rails fails
+#+begin_src sh
+type rails
+#+end_src
+
+#+results:
+: rails is /nix/store/r1bnkdqa5498hivzckw6qqhg87g57qf8-devenv-profile/bin/rails
+
+#+begin_src sh :results output verbatim :exports both
+rails --help 2>&1
+#+end_src
+
+#+results:
+#+begin_example
+/nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `initialize':  (Bundler::Dsl::DSLError)
+[!] There was an error parsing `Gemfile`: No such file or directory @ rb_sysopen - /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/.ruby-version. Bundler cannot continue.
+
+ #  from /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/Gemfile:3
+ #  -------------------------------------------
+ #
+ >  ruby file: '.ruby-version'
+ #
+ #  -------------------------------------------
+
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `open'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `block in read_file'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/shared_helpers.rb:103:in `filesystem_access'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:504:in `read_file'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/ruby_dsl.rb:44:in `normalize_ruby_file'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/ruby_dsl.rb:19:in `ruby'
+	from /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/Gemfile:3:in `eval_gemfile'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:49:in `instance_eval'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:49:in `eval_gemfile'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:12:in `evaluate'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/definition.rb:38:in `build'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:208:in `definition'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:156:in `setup'
+	from /nix/store/r1bnkdqa5498hivzckw6qqhg87g57qf8-devenv-profile/bin/rails:33:in `<main>'
+/nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `initialize': No such file or directory @ rb_sysopen - /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/.ruby-version (Errno::ENOENT)
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `open'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `block in read_file'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/shared_helpers.rb:103:in `filesystem_access'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:504:in `read_file'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/ruby_dsl.rb:44:in `normalize_ruby_file'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/ruby_dsl.rb:19:in `ruby'
+	from /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/Gemfile:3:in `eval_gemfile'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:49:in `instance_eval'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:49:in `eval_gemfile'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:12:in `evaluate'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/definition.rb:38:in `build'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:208:in `definition'
+	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:156:in `setup'
+	from /nix/store/r1bnkdqa5498hivzckw6qqhg87g57qf8-devenv-profile/bin/rails:33:in `<main>'
+#+end_example

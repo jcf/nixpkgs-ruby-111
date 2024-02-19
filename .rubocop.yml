@@ -1,0 +1,54 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+# RSpec blocks are never too long if the tests are providing value.
+Metrics/BlockLength:
+  AllowedMethods: ["describe", "context"]
+
+# If, like me, you're used to functional programming and rich data-types this
+# isn't out of the ordinary.
+#
+# Names like `s` for a string, `m` for a map, `xs` for collection of things,
+# `op` for an operation, or `tx` for a transaction are fine in the right
+# context.
+#
+# We promise to be considerate coders.
+Naming/MethodParameterName:
+  MinNameLength: 1
+
+# Not all top-level classes/modules need a documentation string.
+Style/Documentation:
+  Exclude:
+    - "app/**/*.rb"
+    - "config/application.rb"
+    - "db/migrate/*.rb"
+    - "test/**/*.rb"
+
+Style/RedundantConstantBase:
+  Exclude:
+    # Ignore use of `::Logger::Formatter.new`.
+    - "config/environments/production.rb"
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+# There's nothing wrong with user a plain old `double` in a language designed to
+# support duck-typing. When what matters is the conformance to an interface, the
+# class itself is irrelevant BY DESIGN!
+RSpec/VerifiedDoubles:
+  Enabled: false
