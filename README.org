@@ -36,7 +36,7 @@ type rails
 #+end_src
 
 #+results:
-: rails is /nix/store/r1bnkdqa5498hivzckw6qqhg87g57qf8-devenv-profile/bin/rails
+: rails is /nix/store/n0ww374rh8xgq0p1hxbasxdfr389j2ni-devenv-profile/bin/rails
 
 ** Invoke Rails CLI
 #+begin_src sh :results output verbatim :exports both
@@ -45,43 +45,20 @@ rails --help 2>&1
 
 #+results:
 #+begin_example
-/nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `initialize':  (Bundler::Dsl::DSLError)
-[!] There was an error parsing `Gemfile`: No such file or directory @ rb_sysopen - /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/.ruby-version. Bundler cannot continue.
+Usage:
+  rails COMMAND [options]
 
- #  from /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/Gemfile:3
- #  -------------------------------------------
- #
- >  ruby file: '.ruby-version'
- #
- #  -------------------------------------------
+You must specify a command:
 
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `open'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `block in read_file'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/shared_helpers.rb:103:in `filesystem_access'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:504:in `read_file'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/ruby_dsl.rb:44:in `normalize_ruby_file'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/ruby_dsl.rb:19:in `ruby'
-	from /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/Gemfile:3:in `eval_gemfile'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:49:in `instance_eval'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:49:in `eval_gemfile'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:12:in `evaluate'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/definition.rb:38:in `build'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:208:in `definition'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:156:in `setup'
-	from /nix/store/r1bnkdqa5498hivzckw6qqhg87g57qf8-devenv-profile/bin/rails:33:in `<main>'
-/nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `initialize': No such file or directory @ rb_sysopen - /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/.ruby-version (Errno::ENOENT)
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `open'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:505:in `block in read_file'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/shared_helpers.rb:103:in `filesystem_access'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:504:in `read_file'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/ruby_dsl.rb:44:in `normalize_ruby_file'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/ruby_dsl.rb:19:in `ruby'
-	from /nix/store/2d9xpijjdj9d0s4s6sqf6sf317hyag2s-gemfile-and-lockfile/Gemfile:3:in `eval_gemfile'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:49:in `instance_eval'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:49:in `eval_gemfile'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/dsl.rb:12:in `evaluate'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler/definition.rb:38:in `build'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:208:in `definition'
-	from /nix/store/0ya17xc3l8lw4k01xl8jf1ipxi7iqxv6-bundler-2.5.5/lib/ruby/gems/3.2.0/gems/bundler-2.5.5/lib/bundler.rb:156:in `setup'
-	from /nix/store/r1bnkdqa5498hivzckw6qqhg87g57qf8-devenv-profile/bin/rails:33:in `<main>'
+  new          Create a new Rails application. "rails new my_app" creates a
+               new application called MyApp in "./my_app"
+  plugin new   Create a new Rails railtie or engine
+
+All commands can be run with -h (or --help) for more information.
+
+Inside a Rails application directory, some common commands are:
+
+  console      Start the Rails console
+  server       Start the Rails server
+  test         Run tests except system tests
 #+end_example
