@@ -41,6 +41,7 @@
           name = "nixpkgs-ruby-111-gems";
           gemdir = ./.;
           groups = ["default" "development" "production" "test"];
+          extraConfigPaths = [ "${./.}/.ruby-version" ];
         };
 
         updater = pkgs.writeScriptBin "nixpkgs-ruby-111-gems-update" (builtins.readFile
