@@ -3,13 +3,23 @@
 
 https://github.com/bobvanderlinden/nixpkgs-ruby/issues/111
 
+* Contents                                                              :TOC:
+- [[#setup][Setup]]
+  - [[#install-ruby][Install Ruby]]
+  - [[#update-gems][Update gems]]
+- [[#rails-fails][Rails fails]]
+  - [[#where-is-rails][Where is Rails?]]
+  - [[#invoke-rails-cli][Invoke Rails CLI]]
+
 * Setup
+** Install Ruby
 Install Ruby and our Bundix wrapper.
 
 #+begin_src sh :eval never
 direnv reload
 #+end_src
 
+** Update gems
 Update gems, blowing away lock files, and make sure binstubs are available.
 
 #+begin_src sh :eval never
@@ -17,6 +27,10 @@ nixpkgs-ruby-111-gems-update && direnv reload
 #+end_src
 
 * Rails fails
+** Where is Rails?
+To be sure we're not using an ancient version of Rails included in popular
+BSD-derivatives.
+
 #+begin_src sh
 type rails
 #+end_src
@@ -24,6 +38,7 @@ type rails
 #+results:
 : rails is /nix/store/r1bnkdqa5498hivzckw6qqhg87g57qf8-devenv-profile/bin/rails
 
+** Invoke Rails CLI
 #+begin_src sh :results output verbatim :exports both
 rails --help 2>&1
 #+end_src
